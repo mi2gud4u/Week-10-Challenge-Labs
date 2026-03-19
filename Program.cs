@@ -62,15 +62,18 @@ namespace Week_10_Challenge_Labs
             Console.WriteLine("First Array: [" + string.Join(", ", nums1) + "]");
             Console.WriteLine("Second Array: [" + string.Join(", ", nums2) + "]");
 
-            for (int i = m, j = 0; i < m + n; i++, j++)
+            int length = m + n - 1;
+
+            for (int i = m - 1, j = n - 1; j >= 0;)
             {
-                nums1[i] = nums2[j];
-            }
-
-            Array.Sort(nums1);
+                if (i >= 0 && nums1[i] > nums2[j])
+                    nums1[length--] = nums1[i--];
+                else
+                    nums1[length--] = nums2[j--];
+              }
             Console.WriteLine("Merged Array: [" + string.Join(", ", nums1) + "]");
-
         }
+
     }
 
 }
